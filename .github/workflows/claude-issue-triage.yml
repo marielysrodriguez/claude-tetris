@@ -94,6 +94,8 @@ jobs:
             - **Riesgos y casos borde**, y **criterios de aceptación**.
             - **Preguntas abiertas** (solo si aplica).
             Al pie indica si fue "Creado" o "Actualizado tras edición del issue".
+            El comentario debe estar en formato Markdown válido y bien estructurado (encabezados,
+            listas, negritas y bloques de código con su lenguaje) para que Jico lo pueda entender.
 
             ## 4. Publicar sin duplicar
             Busca un comentario existente que contenga el marcador con
