@@ -34,26 +34,26 @@ jobs:
         run: |
           create() { gh label create "$1" --color "$2" --description "$3" --force; }
           # Type
-          create "bug"           "d73a4a" "Algo no funciona como se espera"
-          create "enhancement"   "a2eeef" "Nueva funcionalidad o mejora"
-          create "question"      "d876e3" "Pregunta o duda"
-          create "documentation" "0075ca" "Cambios en documentación"
+          create "bug"           "d73a4a" "Something isn't working as expected"
+          create "enhancement"   "a2eeef" "New feature or improvement"
+          create "question"      "d876e3" "Further information is requested"
+          create "documentation" "0075ca" "Improvements or additions to documentation"
           # Area
-          create "area:gameplay"     "fbca04" "Piezas, rotación, colisión, scoring, niveles"
-          create "area:ui"           "c5def5" "Canvas, HTML, CSS, apariencia"
-          create "area:controls"     "bfd4f2" "Entrada de teclado y controles"
-          create "area:performance"  "f9d0c4" "Rendimiento y game loop"
-          create "area:ci"           "ededed" "Workflows y automatización"
+          create "area:gameplay"     "fbca04" "Pieces, rotation, collision, scoring, levels"
+          create "area:ui"           "c5def5" "Canvas, HTML, CSS, visuals"
+          create "area:controls"     "bfd4f2" "Keyboard input and controls"
+          create "area:performance"  "f9d0c4" "Performance and game loop"
+          create "area:ci"           "ededed" "Workflows and automation"
           # Priority
-          create "priority:high"   "b60205" "Prioridad alta"
-          create "priority:medium" "e99695" "Prioridad media"
-          create "priority:low"    "0e8a16" "Prioridad baja"
+          create "priority:high"   "b60205" "High priority"
+          create "priority:medium" "e99695" "Medium priority"
+          create "priority:low"    "0e8a16" "Low priority"
           # Size
-          create "size:small"  "c2e0c6" "Cambio pequeño"
-          create "size:medium" "fef2c0" "Cambio mediano"
-          create "size:large"  "f9c9a8" "Cambio grande"
+          create "size:small"  "c2e0c6" "Small change"
+          create "size:medium" "fef2c0" "Medium change"
+          create "size:large"  "f9c9a8" "Large change"
           # State
-          create "needs-info" "ffffff" "Falta información para diagnosticar"
+          create "needs-info" "ffffff" "More information needed to diagnose"
 
       - name: Triage issue with Claude
         uses: anthropics/claude-code-action@v1
