@@ -35,3 +35,5 @@ Key pieces and how they connect:
 - **Input** (`keydown` listener): arrow keys move/rotate/soft-drop, `Space` hard-drops (with `preventDefault` to stop page scroll), `P` toggles pause. Input is ignored while `paused || gameOver` except the pause key itself.
 
 Tunable constants live at the top of `game.js`: `COLS`, `ROWS`, `BLOCK` (pixel size per cell), `COLORS`, `LINE_SCORES`, and the initial `dropInterval` set in `init()`. If `COLS`/`ROWS`/`BLOCK` change, update the `<canvas id="board">` `width`/`height` in `index.html` to match (`COLS × BLOCK` by `ROWS × BLOCK`).
+
+- **Theming**: colors are CSS variables in `style.css` (`:root` = dark default, `[data-theme="light"]` = light). `applyTheme()` in `game.js` sets `data-theme` on `<html>`, caches the `--grid` color for `drawGrid`, persists the choice in `localStorage` (`theme` key) and redraws. A small inline script in `index.html` applies the saved theme before first paint. Piece colors are the same in both themes.
