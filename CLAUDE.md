@@ -24,8 +24,8 @@ Everything lives in one file with module-level mutable state (`board, current, n
 
 Key pieces and how they connect:
 
-- **Board model**: `ROWS × COLS` matrix, each cell `0` (empty) or a color index `1–7` identifying the locked piece type.
-- **Pieces**: `PIECES` are square matrices; `randomPiece()` picks one of the 7 standard tetrominoes and centers it at spawn. Rotation (`rotateCW`) transposes + reverses rows — there's no per-piece rotation state (SRS), just a naive matrix rotation.
+- **Board model**: `ROWS × COLS` matrix, each cell `0` (empty) or a color index `1–8` identifying the locked piece type.
+- **Pieces**: `PIECES` are square matrices; `randomPiece()` picks uniformly from every entry in `PIECES` (the 7 standard tetrominoes plus the 3×3 "nut" challenge piece, index 8: a ring with an empty center, gray) and centers it at spawn. Adding a piece only needs a `COLORS` entry and a `PIECES` entry at the same index. The nut is symmetric, so rotating it changes nothing, and once locked its hollow center can't be filled until the row above it is cleared. Rotation (`rotateCW`) transposes + reverses rows — there's no per-piece rotation state (SRS), just a naive matrix rotation.
 - **Collision** (`collide`): checks board bounds and overlap with locked cells for a shape at a given offset. This is the single source of truth used by movement, rotation, ghost-piece projection, and drop logic — reuse it rather than writing new bounds/overlap checks.
 - **Wall kicks** (`tryRotate`): after rotating, tries offsets `[0, -1, 1, -2, 2]` against `collide` and takes the first that fits. This is a simplified stand-in for full SRS kick tables.
 - **Lock → merge → clear → spawn pipeline** (`lockPiece`): `merge()` bakes the current piece into `board`, `clearLines()` removes completed rows (scans bottom-up, splices + unshifts an empty row, re-checks the same index after a splice), then `spawn()` promotes `next` to `current` and generates a new `next`. If the newly spawned piece immediately collides, `endGame()` fires.
